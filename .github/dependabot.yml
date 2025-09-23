@@ -1,0 +1,146 @@
+version: 2
+updates:
+  # Main package.json
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+    open-pull-requests-limit: 5
+    reviewers:
+      - "softengrahmed"
+    assignees:
+      - "softengrahmed"
+    commit-message:
+      prefix: "chore(deps)"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "npm"
+    ignore:
+      # Ignore major version updates for core packages to maintain stability
+      - dependency-name: "react"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "react-dom"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "webpack"
+        update-types: ["version-update:semver-major"]
+
+  # Lerna package: create-react-app
+  - package-ecosystem: "npm"
+    directory: "/packages/create-react-app"
+    schedule:
+      interval: "weekly"
+      day: "tuesday"
+      time: "09:00"
+    open-pull-requests-limit: 3
+    commit-message:
+      prefix: "chore(create-react-app)"
+    labels:
+      - "dependencies"
+      - "create-react-app"
+
+  # Lerna package: react-scripts
+  - package-ecosystem: "npm"
+    directory: "/packages/react-scripts"
+    schedule:
+      interval: "weekly"
+      day: "tuesday"
+      time: "10:00"
+    open-pull-requests-limit: 3
+    commit-message:
+      prefix: "chore(react-scripts)"
+    labels:
+      - "dependencies"
+      - "react-scripts"
+    ignore:
+      # Critical packages that need manual review
+      - dependency-name: "webpack"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "babel-loader"
+        update-types: ["version-update:semver-major"]
+
+  # Lerna package: babel-preset-react-app
+  - package-ecosystem: "npm"
+    directory: "/packages/babel-preset-react-app"
+    schedule:
+      interval: "weekly"
+      day: "wednesday"
+      time: "09:00"
+    open-pull-requests-limit: 2
+    commit-message:
+      prefix: "chore(babel-preset)"
+    labels:
+      - "dependencies"
+      - "babel"
+
+  # Lerna package: react-dev-utils
+  - package-ecosystem: "npm"
+    directory: "/packages/react-dev-utils"
+    schedule:
+      interval: "weekly"
+      day: "wednesday"
+      time: "10:00"
+    open-pull-requests-limit: 2
+    commit-message:
+      prefix: "chore(dev-utils)"
+    labels:
+      - "dependencies"
+      - "dev-utils"
+
+  # Lerna package: react-error-overlay
+  - package-ecosystem: "npm"
+    directory: "/packages/react-error-overlay"
+    schedule:
+      interval: "weekly"
+      day: "thursday"
+      time: "09:00"
+    open-pull-requests-limit: 2
+    commit-message:
+      prefix: "chore(error-overlay)"
+    labels:
+      - "dependencies"
+      - "error-overlay"
+
+  # Lerna package: eslint-config-react-app
+  - package-ecosystem: "npm"
+    directory: "/packages/eslint-config-react-app"
+    schedule:
+      interval: "weekly"
+      day: "thursday"
+      time: "10:00"
+    open-pull-requests-limit: 2
+    commit-message:
+      prefix: "chore(eslint-config)"
+    labels:
+      - "dependencies"
+      - "eslint"
+
+  # Docusaurus website
+  - package-ecosystem: "npm"
+    directory: "/docusaurus/website"
+    schedule:
+      interval: "weekly"
+      day: "friday"
+      time: "09:00"
+    open-pull-requests-limit: 3
+    commit-message:
+      prefix: "chore(docs)"
+    labels:
+      - "dependencies"
+      - "documentation"
+
+  # GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+      day: "first-monday"
+      time: "10:00"
+    open-pull-requests-limit: 2
+    commit-message:
+      prefix: "chore(ci)"
+    labels:
+      - "github-actions"
+      - "ci/cd"
